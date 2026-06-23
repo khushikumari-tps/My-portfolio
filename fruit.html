@@ -6,22 +6,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First Page</title>
     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        main {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Table styling */
         table {
             border-collapse: collapse;
-            width: 50%;
-            margin: 20px 0;
+            width: 100%;
+            margin: 20px 0 40px 0;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-
-        th,
-        td {
-            padding: 10px;
+        table th, table td {
+            padding: 12px 15px;
             text-align: left;
+        }
+
+        table th {
+            background-color: #3b82f6;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        table tr {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        /* Form styling */
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h4 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        h5 {
+            color: #475569;
+            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        /* Form elements styling */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #334155;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: #334155;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            background-color: #f8fafc;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="password"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Selection controls (radios & checkboxes) */
+        .selection-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .selection-group input {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: #3b82f6;
+        }
+
+        .selection-group label {
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* Submit Button */
+        input[type="submit"] {
+            width: 100%;
+            background-color: #3b82f6;
+            color: #ffffff;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+
+        /* Textarea customization */
+        textarea {
+            resize: vertical;
+            min-height: 80px;
         }
     </style>
 </head>
@@ -65,53 +208,59 @@
                 </tr>
             </tbody>
         </table> -->
-        <h4>Registration      From</h4>
-        <from action="/action php">
-            <input type="text" placeholder="username">
-            <br>
-            <br>
-            <input type="text" placeholder="password">
-            <br><br>
-            <h5>select your class</h5>
+        <h4>Registration Form</h4>
+        <form action="/action.php" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+            </div>
 
-            <lable for="101">
-                <input type="radio" value="classXI" name="class">classXI
-                <br><br>
-                <lable>
-                    <input type="radio" value="classXII" name="class">classXII
-                </lable>
-                <br><br>
-                <h5>select your fav subject</h5>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
 
-                <lable for="Math">
-                    <input type="checkbox" value="math" name="subject" id="101">Math
-                </lable>
-                <br><br>
-                <lable for="physics">
-                    <input type="checkbox" value="physics" name="subject" id="101">physics
-                </lable>
-                <br><br>
+            <h5>Select your class</h5>
+            <div class="selection-group">
+                <input type="radio" id="classXI" value="classXI" name="class" required>
+                <label for="classXI">Class XI</label>
+            </div>
+            <div class="selection-group">
+                <input type="radio" id="classXII" value="classXII" name="class">
+                <label for="classXII">Class XII</label>
+            </div>
 
+            <h5>Select your favorite subjects</h5>
+            <div class="selection-group">
+                <input type="checkbox" id="subject-math" value="math" name="subject">
+                <label for="subject-math">Math</label>
+            </div>
+            <div class="selection-group">
+                <input type="checkbox" id="subject-physics" value="physics" name="subject">
+                <label for="subject-physics">Physics</label>
+            </div>
+            <div class="selection-group">
+                <input type="checkbox" id="subject-biology" value="biology" name="subject">
+                <label for="subject-biology">Biology</label>
+            </div>
 
-                <lable for="biology">
-                    <input type="checkbox" value="biology" name="subject" id="101">biology
-                </lable>
-                <br><br>
-                <select name="city">
+            <h5>Select your city</h5>
+            <div class="form-group">
+                <select name="city" id="city">
                     <option value="Delhi">Delhi</option>
-                    <option value="Banglore">Banglore</option>
-                    <option value="Pune">punne</option>
-                    <option value="Mumbai">mumbai</option>
-
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Mumbai">Mumbai</option>
                 </select>
-                <br><br>
-                <textarea name="feedback" id="101" placeholder="please give your velueble feedback here"></textarea>
-                <br>
+            </div>
 
-                <input type="submit" value="submit">
+            <div class="form-group">
+                <label for="feedback">Valuable Feedback</label>
+                <textarea name="feedback" id="feedback" placeholder="Please give your valuable feedback here"></textarea>
+            </div>
 
-
-        </from>
+            <input type="submit" value="Submit">
+        </form>
 
 
 
